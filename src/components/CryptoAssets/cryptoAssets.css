@@ -1,0 +1,19 @@
+.ArtworkItem {
+  display: inline-block;
+  width: 20%;
+  margin: 10px;
+  padding: 30px 0;
+  border: 1px solid black;
+}
+
+.ArtworkItemImage {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  margin: auto;
+}
+
+.ArtworkBids,
+.ArtworkDetails {
+  display: inline-block;
+}
