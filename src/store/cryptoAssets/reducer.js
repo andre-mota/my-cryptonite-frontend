@@ -1,6 +1,6 @@
 // src/store/cryptoAssets/reducer.js
 
-import { CRYPTOASSETS_GET_ALL } from "./actions";
+import { CRYPTOASSETS_GET_ALL, CRYPTOASSETS_DELETE } from "./actions";
 
 // Create an inital state that will hold an array named 'list'
 const initialState = {
@@ -15,6 +15,12 @@ export default function cryptoAssetsReducer(state = initialState, action) {
         list: [...action.payload],
       };
     }
+    // case CRYPTOASSETS_DELETE: {
+    //   return {
+    //     ...state,
+    //     list:
+    //   }
+    // }
     default: {
       return state;
     }

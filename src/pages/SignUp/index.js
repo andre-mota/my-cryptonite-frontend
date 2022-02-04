@@ -12,7 +12,6 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isArtist, setIsArtist] = useState(false);
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const navigate = useNavigate();
@@ -26,12 +25,11 @@ export default function SignUp() {
   function submitForm(event) {
     event.preventDefault();
 
-    dispatch(signUp(name, email, password, isArtist));
+    dispatch(signUp(name, email, password));
 
     setEmail("");
     setPassword("");
     setName("");
-    setIsArtist(false);
   }
 
   return (
@@ -70,14 +68,6 @@ export default function SignUp() {
             type="password"
             placeholder="Password"
             required
-          />
-        </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check
-            type="checkbox"
-            label="I am an artist"
-            onChange={(e) => setIsArtist(!isArtist)}
-            checked={isArtist}
           />
         </Form.Group>
         <Form.Group className="mt-5">
