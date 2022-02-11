@@ -13,8 +13,7 @@ import { selectSelectedArtwork } from "../../store/selectedArtwork/selectors.js"
 
 // Import components
 import PageHeader from "../../components/PageHeader";
-import ArtworkDetails from "../../components/Artwork/Details";
-import ArtworkBids from "../../components/Artwork/Bids";
+
 import Loading from "../../components/Loading";
 
 export default function ArtworkFullDetails() {
@@ -39,8 +38,6 @@ export default function ArtworkFullDetails() {
   return (
     <div className="SelectedArtwork">
       <PageHeader header={artwork.title} subHeader={artwork.user?.name} />
-      <ArtworkDetails {...artwork} />
-      <ArtworkBids bids={artwork.bids} minimumBid={artwork.minimumBid} />
     </div>
   );
 }

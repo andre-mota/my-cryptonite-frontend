@@ -7,9 +7,7 @@ export default function PageHeader(props) {
     <div style={{ backgroundColor: "whitesmoke" }}>
       <h1>{props.header}</h1>
       {props.subHeader && <h3>{props.subHeader}</h3>}
-      <div>
-        <PortfolioOption />
-      </div>
+      <div>{props.options && <PortfolioOption />}</div>
     </div>
   );
 }

@@ -3,6 +3,7 @@
 // React & Redux imports
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 // Import components
 import CryptoAssetItem from "./Item";
@@ -45,6 +46,44 @@ export default function CryptoAssetsList() {
     dispatch(fetchAllCryptoAssets());
   };
 
+  // currencies calculation
+  const calculateValue = (currency, holdings) => {
+    switch (currency) {
+      case "Ethereum": {
+        return holdings * 3100.5;
+      }
+      case "Bitcoin": {
+        return holdings * 37067.4;
+      }
+      case "Doge": {
+        return holdings * 0.125168;
+      }
+      case "Shiba": {
+        return holdings * 0.00001895;
+      }
+      default: {
+        return holdings * 4000;
+      }
+    }
+  };
+
+  const showType = (typeId) => {
+    switch (typeId) {
+      case 1: {
+        return "Daily";
+      }
+      case 2: {
+        return "Start of the month";
+      }
+      case 3: {
+        return "End of the month";
+      }
+      default: {
+        return "Daily";
+      }
+    }
+  };
+
   // Delete term
   // const handleEditTerm = (event, assetId) => {
   //   event.preventDefault();
@@ -75,13 +114,16 @@ export default function CryptoAssetsList() {
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {asset.currency.name}
+                <Link to="/cryptoassets/1">{asset.currency.name}</Link>
               </TableCell>
               <TableCell align="right">{asset.quantity}</TableCell>
               <TableCell align="right">{asset.apy}%</TableCell>
-              <TableCell align="right">Calculate value</TableCell>{" "}
-              {/** function calculatePrice(currency, holdings) */}
-              <TableCell align="right">{asset.payoutTypeId}</TableCell>
+              <TableCell align="right">
+                {calculateValue(asset.currency.name, asset.quantity)}
+              </TableCell>
+              <TableCell align="right">
+                {showType(asset.payoutTypeId)}
+              </TableCell>
               <TableCell align="right">{asset.name}</TableCell>
               <TableCell align="right">
                 <Stack direction="row" spacing={0}>
@@ -99,6 +141,7 @@ export default function CryptoAssetsList() {
                   </IconButton>
                 </Stack>
               </TableCell>
+              {/* </Link> */}
             </TableRow>
           ))}
         </TableBody>

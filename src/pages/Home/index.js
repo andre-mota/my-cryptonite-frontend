@@ -34,7 +34,7 @@ export default function Home() {
   //TODO Get user's name
   return (
     <div>
-      <PageHeader header="My Portfolio" />
+      <PageHeader header="My Portfolio" options={true} />
       <CryptoAssetsList />
     </div>
   );
